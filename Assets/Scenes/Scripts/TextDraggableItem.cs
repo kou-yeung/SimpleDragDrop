@@ -17,6 +17,7 @@ namespace Sample
 
     public sealed class TextDraggableItem : DraggableItem
     {
+        [SerializeField] CanvasGroup canvasGroup;
         [SerializeField] Text label;
         readonly CompositeDisposable disposables = new();
         protected override IDragPayload CreatePayload()
@@ -26,6 +27,16 @@ namespace Sample
         void OnDestroy()
         {
             disposables.Dispose();
+        }
+
+        protected override void WillBeginDrag()
+        {
+            canvasGroup.alpha = 0f;
+        }
+
+        protected override void WillEndDrag()
+        {
+            canvasGroup.alpha = 1f;
         }
     }
 }

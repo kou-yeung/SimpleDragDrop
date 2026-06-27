@@ -1448,6 +1448,7 @@ GameObject:
   - component: {fileID: 887600484}
   - component: {fileID: 887600483}
   - component: {fileID: 887600481}
+  - component: {fileID: 887600485}
   m_Layer: 5
   m_Name: C
   m_TagString: Untagged
@@ -1488,6 +1489,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sample.UI.DragDrop.TextDraggableItem
   group: {fileID: 563797067}
+  canDrag: 1
+  canvasGroup: {fileID: 887600485}
   label: {fileID: 310023700}
 --- !u!114 &887600483
 MonoBehaviour:
@@ -1527,6 +1530,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 887600479}
   m_CullTransparentMesh: 1
+--- !u!225 &887600485
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 887600479}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &997508916
 GameObject:
   m_ObjectHideFlags: 0
@@ -1539,6 +1554,7 @@ GameObject:
   - component: {fileID: 997508920}
   - component: {fileID: 997508919}
   - component: {fileID: 997508921}
+  - component: {fileID: 997508922}
   m_Layer: 5
   m_Name: A
   m_TagString: Untagged
@@ -1617,7 +1633,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sample.UI.DragDrop.TextDraggableItem
   group: {fileID: 563797067}
+  canDrag: 1
+  canvasGroup: {fileID: 997508922}
   label: {fileID: 197111858}
+--- !u!225 &997508922
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 997508916}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1044024812
 GameObject:
   m_ObjectHideFlags: 0
@@ -1705,6 +1735,7 @@ GameObject:
   - component: {fileID: 1117662166}
   - component: {fileID: 1117662165}
   - component: {fileID: 1117662163}
+  - component: {fileID: 1117662167}
   m_Layer: 5
   m_Name: B
   m_TagString: Untagged
@@ -1745,6 +1776,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sample.UI.DragDrop.TextDraggableItem
   group: {fileID: 563797067}
+  canDrag: 0
+  canvasGroup: {fileID: 1117662167}
   label: {fileID: 1066465}
 --- !u!114 &1117662165
 MonoBehaviour:
@@ -1784,6 +1817,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1117662161}
   m_CullTransparentMesh: 1
+--- !u!225 &1117662167
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1117662161}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &1181290831
 GameObject:
   m_ObjectHideFlags: 0
@@ -1835,6 +1880,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sample.UI.DragDrop.ColorDraggableItem
   group: {fileID: 1363723475}
+  canDrag: 1
 --- !u!114 &1181290834
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2198,6 +2244,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sample.UI.DragDrop.ColorDraggableItem
   group: {fileID: 1363723475}
+  canDrag: 1
 --- !u!114 &1420835555
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2905,6 +2952,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Sample.UI.DragDrop.ColorDraggableItem
   group: {fileID: 1363723475}
+  canDrag: 1
 --- !u!114 &1946730071
 MonoBehaviour:
   m_ObjectHideFlags: 0
