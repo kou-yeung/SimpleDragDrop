@@ -10,18 +10,37 @@ namespace SimpleDragDrop
         CanvasGroup canvasGroup;
 
         Canvas canvas;
-        RectTransform canvasRectTransform;
+        Canvas Canvas
+        {
+            get
+            {
+                if (canvas == null)
+                {
+                    canvas = GetComponentInParent<Canvas>();
+                }
+                return canvas;
+            }
+        }
 
+        RectTransform canvasRectTransform;
+        RectTransform CanvasRectTransform
+        {
+            get
+            {
+                if (canvasRectTransform == null && Canvas != null)
+                {
+                    canvasRectTransform = Canvas.transform as RectTransform;
+                }
+                return canvasRectTransform;
+            }
+        }
         protected abstract void ApplyGhost(IDragPayload payload);
         protected virtual void ClearGhost() { }
 
-        void Awake()
+        void Start()
         {
             rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
-
-            canvas = GetComponentInParent<Canvas>();
-            canvasRectTransform = canvas.transform as RectTransform;
 
             canvasGroup.blocksRaycasts = false;
             gameObject.SetActive(false);
@@ -38,12 +57,21 @@ namespace SimpleDragDrop
 
         public void Move(Vector2 screenPosition)
         {
-            var camera = canvas.renderMode == RenderMode.ScreenSpaceOverlay
+            var targetCanvas = Canvas;
+            var canvasRect = CanvasRectTransform;
+
+            if (targetCanvas == null || canvasRect == null)
+            {
+                rectTransform.position = screenPosition;
+                return;
+            }
+
+            var camera = targetCanvas.renderMode == RenderMode.ScreenSpaceOverlay
                 ? null
-                : canvas.worldCamera;
+                : targetCanvas.worldCamera;
 
             RectTransformUtility.ScreenPointToLocalPointInRectangle(
-                canvasRectTransform,
+                canvasRect,
                 screenPosition,
                 camera,
                 out var localPosition);
