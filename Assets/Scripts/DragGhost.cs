@@ -9,6 +9,9 @@ namespace SimpleDragDrop
         RectTransform rectTransform;
         CanvasGroup canvasGroup;
 
+        Canvas canvas;
+        RectTransform canvasRectTransform;
+
         protected abstract void ApplyGhost(IDragPayload payload);
         protected virtual void ClearGhost() { }
 
@@ -17,10 +20,8 @@ namespace SimpleDragDrop
             rectTransform = GetComponent<RectTransform>();
             canvasGroup = GetComponent<CanvasGroup>();
 
-            if (rectTransform == null)
-            {
-                rectTransform = transform as RectTransform;
-            }
+            canvas = GetComponentInParent<Canvas>();
+            canvasRectTransform = canvas.transform as RectTransform;
 
             canvasGroup.blocksRaycasts = false;
             gameObject.SetActive(false);
@@ -34,9 +35,20 @@ namespace SimpleDragDrop
             ApplyGhost(payload);
             Move(screenPosition);
         }
+
         public void Move(Vector2 screenPosition)
         {
-            rectTransform.position = screenPosition;
+            var camera = canvas.renderMode == RenderMode.ScreenSpaceOverlay
+                ? null
+                : canvas.worldCamera;
+
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(
+                canvasRectTransform,
+                screenPosition,
+                camera,
+                out var localPosition);
+
+            rectTransform.localPosition = localPosition;
         }
 
         public void Hide()
